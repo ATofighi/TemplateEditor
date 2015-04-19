@@ -35,7 +35,7 @@ function TemplateEditor_activate() {
 		admin_redirect('index.php?module=config-plugins');
 	}
 
-	$PL->edit_core('TemplateEditor', $config['admin_dir'] . '\modules\style\templates.php',
+	$PL->edit_core('TemplateEditor', $config['admin_dir'] . '/modules/style/templates.php',
 				   array('search' => 'log_admin_action($template[\'tid\'], $mybb->input[\'title\'], $mybb->input[\'sid\'], $set[\'title\']);',
 						 'after'  => '$plugins->run_hooks(\'template_commit_success\');'), TRUE, $d);
 
@@ -46,7 +46,7 @@ function TemplateEditor_deactivate() {
 
 	$PL or require_once PLUGINLIBRARY;
 
-	$PL->edit_core('TemplateEditor', $config['admin_dir'] . '\modules\style\templates.php', array(), TRUE, $d);
+	$PL->edit_core('TemplateEditor', $config['admin_dir'] . '/modules/style/templates.php', array(), TRUE, $d);
 }
 
 function TemplateEditor_handler( &$actions ) {
