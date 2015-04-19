@@ -1,0 +1,310 @@
+body {
+	overflow: hidden;
+}
+
+.breadcrumb {
+    display: none;
+}
+
+#template_editor {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #3e3f40;
+	color: #fff;
+}
+
+.main_tabs {
+    margin: 0;
+    padding: 0;
+}
+
+#aceEditor {
+    width: 100%;
+	height: auto!important;
+    display: none;
+	position: absolute;
+	top: 26px;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	z-index:20;
+}
+
+.main_tab_close {
+    display: block;
+    float: right;
+    color: #696969;
+	vertical-align: middle;
+	margin: 2px 3px 0;
+    line-height: 100%;
+	font-family: FontAwesome;
+}
+
+html[dir=rtl] .main_tab_close {
+	float: left;
+}
+
+.main_tab {
+    padding-right: 5px;
+    float: left;
+    margin-left: 1px;
+}
+
+html[dir=rtl] .main_tab {
+	float: right;
+}
+
+.main_1 {
+    margin: 0;
+	padding: 0;
+	height: 23px;
+	border-bottom: 3px solid #494949;
+	box-shadow: 0 -1px #292b2d inset;
+	position: relative;
+}
+
+#scrollerBtn {
+	z-index: 10;
+	height: 23px;
+	background: #3e3f40;
+	position:fixed;
+	top: 0;
+	right: 0;
+	font-size: 20px;
+	direction: ltr;
+	padding: 0 5px;
+}
+
+html[dir=rtl] #scrollerBtn {
+	right: auto;
+	left: 0;
+}
+
+#scrollerBtn span {
+	cursor: pointer;
+}
+
+.main_1 li, .main_1 li.in_use {
+    cursor: pointer;
+    float: left;
+    background: #3c3f41;
+	border: 1px solid #292b2d;
+	border-top: none;
+    padding: 5px 10px;
+    font-size: 12px;
+	height: 23px;
+	box-sizing: border-box;
+    color: #c9c9c9;
+    margin: 0;
+    position: relative;
+	z-index: 1;
+}
+
+html[dir=ltr] .main_1 li, html[dir=ltr] .main_1 li.in_use {
+	border-left: none;
+}
+
+html[dir=rtl] .main_1 li, html[dir=rtl] .main_1 li.in_use {
+	float: right;
+	border-right: none;
+}
+
+.main_1 li.in_use {
+    color: #bbbbbb;
+    background: #494949;
+	box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2) inset;
+	border-bottom: none;
+}
+
+.left_pane {
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+	box-sizing: border-box;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	border-right: 1px solid #292b2d;
+	z-index: 10;
+}
+
+html[dir=rtl] .left_pane {
+	left: auto;
+	right: 0;
+	border-right: none;
+	border-left: 1px solid #292b2d;
+}
+
+.right_pane {
+	position: absolute;
+	left: 300px;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+html[dir=rtl] .right_pane {
+	right: 300px;
+	left: 0;
+}
+
+.template_list {
+	position: absolute;
+	top: 20px;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 10px 0;
+    text-align: left;
+    overflow: auto;
+}
+
+html[dir=rtl] .template_list {
+	text-align: right;
+}
+
+.template_li:before {
+	font-family: 'FontAwesome';
+	content: '\f0da';
+	padding: 0 4px;
+}
+
+html[dir=rtl] .template_li:before {
+	content: '\f0d9';
+}
+
+.template_li_opened:before {
+	content: '\f0d7'!important;
+}
+
+.template_list li {
+    padding: 1px 10px;
+	margin: 0;
+}
+
+.template_list ul {
+    padding: 3px 10px;
+}
+
+.template_list ul li {
+    font-size: 13px;
+    padding: 1px 5px 1px 10px;
+    border-bottom: 0px;
+    font-weight: normal;
+    background: none;
+    position: relative;
+}
+
+html[dir=rtl] .template_list ul li {
+	padding: 1px 10px 1px 5px;
+}
+
+.template_list ul li:hover, .template_list ul  .template_list_selected {
+    background-color: #3c88b0;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+.searchBox {
+	position: relative;
+	width: 100%;
+	box-sizing: border-box;
+	padding-left: 0;
+}
+
+html[dir=rtl] .searchBox {
+	padding-left: 80px;
+	padding-right: 0;
+}
+
+.search {
+	width: 100%;
+	height: 20px;
+	box-sizing:border-box;
+	border: 1px solid #ccc;
+	outline: none;
+	padding: 1px 10px;
+	font-family: Tahoma;
+	font-size: 11px;
+}
+
+.save {
+	position: absolute;
+	top: 0;
+	right: 40px;
+	width: 40px;
+	height: 20px;
+	box-sizing:border-box;
+	background: #eee;
+	border: 1px solid #ccc;
+	border-left: none;
+	font-family: Tahoma;
+	font-size: 11px;
+}
+
+.closeBack {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 40px;
+	height: 20px;
+	box-sizing:border-box;
+	background: #eee;
+	border: 1px solid #ccc;
+	border-left: none;
+	font-family: Tahoma;
+	font-size: 11px;
+}
+
+html[dir=rtl]  .save{
+	right: auto;
+	left: 40px;
+	border-left: 1px solid #ccc;
+	border-right: none;
+}
+
+html[dir=rtl]  .closeBack {
+	right: auto;
+	left: 0;
+	border-left: 1px solid #ccc;
+	border-right: none;
+}
+
+.saved {
+    position: absolute;
+    top: 15px;
+    left: 45%;
+    padding: 11px 15px;
+    border-radius: 5px;
+    color: white;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+	z-index: 1000;
+}
+
+html[dir=rtl] .saved {
+	left: auto;
+	right: 45%;
+}
+
+.template_li span {
+    padding: 0;
+    cursor: pointer;
+}
+
+.template_parent {
+    overflow: visible;
+}
+
+.template_item {
+    display: none;
+    cursor: pointer;
+}
