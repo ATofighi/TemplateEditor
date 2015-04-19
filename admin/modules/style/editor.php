@@ -37,8 +37,8 @@ if ( $mybb->input['action'] == 'edit' && $mybb->input['sid'] ) {
 	</script>
 	<link type="text/css" href="./styles/default/template/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
 	<link type="text/css" href="./styles/default/template.css" rel="stylesheet" id="cp-lang-style" />
-	<script src="./jscripts/default/template/ace/ace.js"></script>
-	<script src="./jscripts/default/template/ace/ext-language_tools.js"></script>
+	<script src="./jscripts/template/ace/ace.js"></script>
+	<script src="./jscripts/template/ace/ext-language_tools.js"></script>
 	<script>var sid = ' . $sid . ', my_post_key = "' . $mybb->post_code . '";</script>
 	<script src="jscripts/template.js"></script>';
 
