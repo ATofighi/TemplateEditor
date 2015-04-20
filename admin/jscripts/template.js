@@ -39,14 +39,14 @@ $(document).ready(function () {
 	
 	function updateEditorTabsScroller() {
 		var myWidth = 0;
-		$('.main_1 li').each(function() {
+		$('.main_tabs li').each(function() {
 			myWidth += parseInt($(this).outerWidth());
 		});
 		$('.right_pane').data('menu-width', myWidth);
 		if(parseInt($('.right_pane').width())-50 < myWidth)
 		{
 			$('#scrollerBtn').show();
-			$('.main_1').width(myWidth+50);
+			$('.main_tabs').width(myWidth+50);
 		}
 		else
 		{
@@ -59,9 +59,30 @@ $(document).ready(function () {
 			
 		if(typeof $("#scrollerBtn").data('scroll') == 'undefined')
 			scrollLeft = 0;
+				
+		if(menuWidth-allWidth < scrollLeft) {
+			scrollLeft = menuWidth-allWidth;
+		}
+		if(scrollLeft < 0) {
+			scrollLeft = 0;
+		}
+
+		$("#scrollerBtn").data('scroll', scrollLeft);
+		$(".main_tabs").css('left', scrollLeft);
+	}
+	
+	var scrollTimeout = 0;
+
+		$('#scrollerBtn span').click(function() {
+		var allWidth = parseInt($('.right_pane').width()),
+			menuWidth = parseInt($('.right_pane').data('menu-width'))+50,
+			scrollLeft = parseInt($("#scrollerBtn").data('scroll')),
+			addLeft = parseInt($(this).data('add'));
+
+		if(typeof $("#scrollerBtn").data('scroll') == 'undefined')
+			scrollLeft = 0;
 		
-		if($('html').attr('dir') == 'rtl')
-			scrollLeft = 1e6;
+		scrollLeft += addLeft;
 		
 		if(menuWidth-allWidth < scrollLeft) {
 			scrollLeft = menuWidth-allWidth;
@@ -71,12 +92,9 @@ $(document).ready(function () {
 		}
 
 		$("#scrollerBtn").data('scroll', scrollLeft);
-		$(".main_tabs").css('margin-left', -1*scrollLeft);
-	}
-	
-	scrollTimeout = 0;
-
-	$('#scrollerBtn span').mousedown(function() {
+		
+		$(".main_tabs").css('left', scrollLeft);
+	}).mousedown(function() {
 		var allWidth = parseInt($('.right_pane').width()),
 			menuWidth = parseInt($('.right_pane').data('menu-width'))+50,
 			scrollLeft = parseInt($("#scrollerBtn").data('scroll')),
@@ -97,7 +115,7 @@ $(document).ready(function () {
 
 			$("#scrollerBtn").data('scroll', scrollLeft);
 			
-			$(".main_tabs").css('margin-left', -1*scrollLeft);
+			$(".main_tabs").css('left', scrollLeft);
 	    }, 100);
 	}).bind('mouseup mouseleave', function() {
 	    clearTimeout(scrollTimeout);

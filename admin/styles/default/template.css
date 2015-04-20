@@ -19,7 +19,7 @@ body {
 .main_tabs {
     margin: 0;
     padding: 0;
-	position: absolute;
+	position: relative;
 	top: 0;
 }
 
@@ -70,8 +70,9 @@ html[dir=rtl] .main_tab {
 
 #scrollerBtn {
 	z-index: 10;
-	height: 23px;
+	height: 22px;
 	background: #3e3f40;
+	border-bottom: 1px solid #292b2d;
 	position:fixed;
 	top: 0;
 	right: 0;
@@ -89,7 +90,12 @@ html[dir=rtl] #scrollerBtn {
 	cursor: pointer;
 }
 
-.main_1 li, .main_1 li.in_use {
+#scrollerBtn span:hover {
+	color: #eee;
+	text-shadow: 0 1px #000, 0 -1px #000, 1px 0 #000, -1px 0 #000;
+}
+
+.main_1 li {
     cursor: pointer;
     float: left;
     background: #3c3f41;
@@ -103,6 +109,10 @@ html[dir=rtl] #scrollerBtn {
     margin: 0;
     position: relative;
 	z-index: 1;
+}
+
+.main_1 li:hover {
+	background: #4c4c4c;
 }
 
 html[dir=ltr] .main_1 li, html[dir=ltr] .main_1 li.in_use {
@@ -131,7 +141,7 @@ html[dir=rtl] .main_1 li, html[dir=rtl] .main_1 li.in_use {
 	left: 0;
 	bottom: 0;
 	border-right: 1px solid #292b2d;
-	z-index: 10;
+	z-index: 1000;
 }
 
 html[dir=rtl] .left_pane {
