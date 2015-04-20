@@ -1,12 +1,14 @@
 <?php
 
 defined('IN_MYBB') or die('Nope');
-defined('PLUGINLIBRARY') or define('PLUGINLIBRARY', MYBB_ROOT . 'inc/plugins/pluginlibrary.php');
 
 function TemplateEditor_success() {
-	global $mybb;
+	global $mybb, $sid;
 
-	if ( (int) $mybb->input['raw'] == 1 )
+	if($sid)
+		log_admin_action($sid, $mybb->input['title']);
+
+	if ( !empty($mybb->input['raw']) )
 		die(json_encode(array('msg' => 'success')));
 }
 
@@ -18,35 +20,6 @@ function TemplateEditor_info() {
 		'version'       => '1.0',
 		'compatibility' => '18*'
 	);
-}
-
-function TemplateEditor_activate() {
-	global $PL, $config;
-
-	if ( !file_exists(PLUGINLIBRARY) ) {
-		flash_message('PluginLibrary is missing, get it at <a href="http://mods.mybb.com/view/pluginlibrary">http://mods.mybb.com/view/pluginlibrary</a>.', 'error');
-		admin_redirect('index.php?module=config-plugins');
-	}
-
-	$PL or require_once PLUGINLIBRARY;
-
-	if ( $PL->version < 9 ) {
-		flash_message('This plugin requires PluginLibrary 9 or newer', 'error');
-		admin_redirect('index.php?module=config-plugins');
-	}
-
-	$PL->edit_core('TemplateEditor', $config['admin_dir'] . '/modules/style/templates.php',
-				   array('search' => 'log_admin_action($template[\'tid\'], $mybb->input[\'title\'], $mybb->input[\'sid\'], $set[\'title\']);',
-						 'after'  => '$plugins->run_hooks(\'template_commit_success\');'), TRUE, $d);
-
-}
-
-function TemplateEditor_deactivate() {
-	global $PL, $config;
-
-	$PL or require_once PLUGINLIBRARY;
-
-	$PL->edit_core('TemplateEditor', $config['admin_dir'] . '/modules/style/templates.php', array(), TRUE, $d);
 }
 
 function TemplateEditor_handler( &$actions ) {
@@ -68,7 +41,7 @@ function TemplateEditor_menu( &$sub_menu ) {
 	return $sub_menu;
 }
 
-$plugins->add_hook('template_commit_success', 'TemplateEditor_success');
+$plugins->add_hook('admin_style_templates_edit_template_commit', 'TemplateEditor_success');
 
 $plugins->add_hook('admin_style_menu', 'TemplateEditor_menu');
 $plugins->add_hook('admin_style_permissions', 'TemplateEditor_permissions');

@@ -35,10 +35,10 @@ if ( $mybb->input['action'] == 'edit' && $mybb->input['sid'] ) {
 		lang.saveAndContinueEditing = "'.$lang->saveAndContinueEditing.'";
 		lang.couldNotSave = "'.$lang->couldNotSave.'";
 	</script>
-	<link type="text/css" href="./styles/default/template/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
 	<link type="text/css" href="./styles/default/template.css" rel="stylesheet" id="cp-lang-style" />
-	<script src="./jscripts/template/ace/ace.js"></script>
-	<script src="./jscripts/template/ace/ext-language_tools.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.1.9/ace.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.1.9/ext-language_tools.js"></script>
 	<script>var sid = ' . $sid . ', my_post_key = "' . $mybb->post_code . '";</script>
 	<script src="jscripts/template.js"></script>';
 

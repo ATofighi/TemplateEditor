@@ -19,6 +19,8 @@ body {
 .main_tabs {
     margin: 0;
     padding: 0;
+	position: absolute;
+	top: 0;
 }
 
 #aceEditor {
